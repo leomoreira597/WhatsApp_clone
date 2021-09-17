@@ -1,9 +1,10 @@
-package com.cursoandroid.whatsapp;
+package com.cursoandroid.whatsapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.cursoandroid.whatsapp.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
