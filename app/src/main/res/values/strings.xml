@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">WhatsApp</string>
+    <string name="valida_titulo">Validação</string>
+    <string name="valida_desc">
+        Você recebeu um SMS para validação do seu número, digite
+        o código de validação abaixo:
+    </string>
+    <string name="btn_validar">Validar</string>
 </resources>
