@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/edit_nome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/edit_codigo_pais"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -45,10 +45,10 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 
     <EditText
-        android:id="@+id/editTextNumber2"
+        android:id="@+id/edit_area"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -58,11 +58,11 @@
         android:inputType="number"
         android:minHeight="48dp"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintStart_toEndOf="@+id/edit_codigo_pais"
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 
     <EditText
-        android:id="@+id/editTextNumber3"
+        android:id="@+id/edit_telefone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -72,8 +72,8 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintStart_toEndOf="@+id/edit_area"
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 
     <Button
         android:id="@+id/botao_cadastrar"
@@ -84,5 +84,5 @@
         android:text="Cadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 </androidx.constraintlayout.widget.ConstraintLayout>
