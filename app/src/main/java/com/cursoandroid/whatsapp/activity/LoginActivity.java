@@ -1,7 +1,11 @@
 package com.cursoandroid.whatsapp.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -9,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.cursoandroid.whatsapp.R;
+import com.cursoandroid.whatsapp.helper.Permissao;
 import com.cursoandroid.whatsapp.helper.Preferencias;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
@@ -22,11 +27,17 @@ public class LoginActivity extends AppCompatActivity {
     private EditText cod_pais;
     private EditText cod_area;
     private Button cadastrar;
+    private String[] permissoes_necessarias = new String[]{
+            Manifest.permission.SEND_SMS,
+            Manifest.permission.INTERNET
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Permissao.valida_permissoes(1,this, permissoes_necessarias);
 
         telefone = findViewById(R.id.edit_telefone);
         cod_pais = findViewById(R.id.edit_codigo_pais);
@@ -82,5 +93,27 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
             return false;
         }
+    }
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        for (int resultado: grantResults){
+            if (resultado == PackageManager.PERMISSION_DENIED){
+                alerta_validacao_permissao();
+            }
+        }
+    }
+    private void alerta_validacao_permissao(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Permissões negadas");
+        builder.setMessage("Para utilizar esse app, é necessario aceitar as permissoes");
+
+        builder.setPositiveButton("CONFIRMAR", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
