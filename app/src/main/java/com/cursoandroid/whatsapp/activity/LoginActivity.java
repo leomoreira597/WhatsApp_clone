@@ -24,15 +24,6 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText nome;
-    private EditText telefone;
-    private EditText cod_pais;
-    private EditText cod_area;
-    private Button cadastrar;
-    private String[] permissoes_necessarias = new String[]{
-            Manifest.permission.SEND_SMS,
-            Manifest.permission.INTERNET
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
