@@ -16,6 +16,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
@@ -61,9 +64,27 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     FirebaseUser usuario_firebase = task.getResult().getUser();
                     usuario.setId(usuario_firebase.getUid());
                     usuario.salvar();
+
+                    autenticacao.signOut();
+                    finish();
                 }
                 else{
-                    Toast.makeText(CadastroUsuarioActivity.this, "Erro ao cadastrar usúario", Toast.LENGTH_SHORT).show();
+                    String erroExcecao="";
+                    try{
+                        throw task.getException();
+                    }
+                    catch (FirebaseAuthWeakPasswordException e){
+                        erroExcecao = "Digite uma senha mais forte!!";
+
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
+                        erroExcecao = "O e-mail digitado é invalido digite um e-mail válido!!";
+                    } catch (FirebaseAuthUserCollisionException e) {
+                        erroExcecao = "Esse e-mail já está em uso no app!!";
+                    } catch (Exception e) {
+                        erroExcecao = "Erro ao efeituar o cadastro!!";
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(CadastroUsuarioActivity.this, "Erro: " + erroExcecao , Toast.LENGTH_SHORT).show();
                 }
             }
         });
