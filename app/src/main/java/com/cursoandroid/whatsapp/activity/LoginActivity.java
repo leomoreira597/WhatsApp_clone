@@ -26,6 +26,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.HashMap;
@@ -74,12 +76,26 @@ public class LoginActivity extends AppCompatActivity {
         ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                String erroConexao ="";
                 if (task.isSuccessful()){
                     abrir_tela_principal();
                     Toast.makeText(LoginActivity.this, "Sucesso ao Logar usuário", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(LoginActivity.this, "Erro ao Logar usuario", Toast.LENGTH_SHORT).show();
+                    try {
+                        throw task.getException();
+                    }
+                    catch (FirebaseAuthInvalidUserException e){
+                        erroConexao = "E-mail e/ou senha inválidos. Tente novamente!!!";
+
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
+                        erroConexao = "E-mail e/ou senha inválidos. Tente novamente!!!";
+                    } catch (Exception e) {
+                        erroConexao = "Desculpe, ocorreu um erro ao conectar, verifique sua internet " +
+                                "ou tente novamente mais tarde!";
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(LoginActivity.this, erroConexao, Toast.LENGTH_LONG).show();
                 }
             }
         });
