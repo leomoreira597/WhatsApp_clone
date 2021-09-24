@@ -90,7 +90,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     } catch (FirebaseAuthInvalidCredentialsException e) {
                         erroConexao = "E-mail e/ou senha inválidos. Tente novamente!!!";
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e) {
                         erroConexao = "Desculpe, ocorreu um erro ao conectar, verifique sua internet " +
                                 "ou tente novamente mais tarde!";
                         e.printStackTrace();
