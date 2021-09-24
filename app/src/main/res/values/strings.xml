@@ -11,4 +11,8 @@
     <string name="cadastro_numero">Não tem conta? Cadastre-se</string>
     <string name="hint_nome">Digite o seu nome</string>
     <string name="bt_sair">Sair</string>
+    <string name="acao_configuracao" translatable="false">Configurações</string>
+    <string name="acao_sair" translatable="false">Sair</string>
+    <string name="pesquisa" translatable="false">Pesquisar</string>
+    <string name="adicionar" translatable="false">Adicionar</string>
 </resources>
