@@ -66,6 +66,7 @@
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/primaria_escura"
         android:text="Entrar"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
