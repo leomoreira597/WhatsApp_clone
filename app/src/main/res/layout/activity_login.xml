@@ -79,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:minHeight="48dp"
         android:onClick="abrir_tela_cadastro"
         android:text="@string/cadastro_numero"
         android:textColor="@color/white"
