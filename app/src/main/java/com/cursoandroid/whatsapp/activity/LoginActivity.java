@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.cursoandroid.whatsapp.R;
 import com.cursoandroid.whatsapp.config.ConfiguracaoFireBase;
+import com.cursoandroid.whatsapp.helper.Base64Custom;
 import com.cursoandroid.whatsapp.helper.Permissao;
 import com.cursoandroid.whatsapp.helper.Preferencias;
 import com.cursoandroid.whatsapp.model.Usuario;
@@ -78,6 +79,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 String erroConexao ="";
                 if (task.isSuccessful()){
+                    Preferencias preferencias = new Preferencias(LoginActivity.this);
+                    String identificadorUsuarioLogado = Base64Custom.codificarBase64(usuario.getEmail());
+                    preferencias.salvar_dados(identificadorUsuarioLogado);
                     abrir_tela_principal();
                     Toast.makeText(LoginActivity.this, "Sucesso ao Logar usuário", Toast.LENGTH_SHORT).show();
                 }

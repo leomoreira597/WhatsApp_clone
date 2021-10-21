@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.cursoandroid.whatsapp.R;
 import com.cursoandroid.whatsapp.config.ConfiguracaoFireBase;
 import com.cursoandroid.whatsapp.helper.Base64Custom;
+import com.cursoandroid.whatsapp.helper.Preferencias;
 import com.cursoandroid.whatsapp.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -63,12 +64,13 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(CadastroUsuarioActivity.this, "Sucesso ao cadastrar usúario", Toast.LENGTH_SHORT).show();
-                    FirebaseUser usuario_firebase = task.getResult().getUser();
                     String identificadorUsuario = Base64Custom.codificarBase64(usuario.getEmail());
                     usuario.setId(identificadorUsuario);
                     usuario.salvar();
-                    abrir_login_usuario();
 
+                    Preferencias preferencias = new Preferencias(CadastroUsuarioActivity.this);
+                    preferencias.salvar_dados(identificadorUsuario);
+                    abrir_login_usuario();
                 }
                 else{
                     String erroExcecao="";

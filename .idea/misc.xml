@@ -4,6 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.21203703703703702" />
+        <entry key="..\:/Users/Dev5/Documents/android/WhatsApp_clone/app/src/main/res/layout/activity_cadastro_usuario.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dev5/Documents/android/WhatsApp_clone/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dev5/Documents/android/WhatsApp_clone/app/src/main/res/layout/fragment_contatos.xml" value="0.33" />
+        <entry key="..\:/Users/Dev5/Documents/android/WhatsApp_clone/app/src/main/res/layout/fragment_conversas.xml" value="0.1331521739130435" />
+        <entry key="..\:/Users/Dev5/Documents/android/WhatsApp_clone/app/src/main/res/layout/lista_contatos.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dev5/Documents/android/WhatsApp_clone/app/src/main/res/layout/toolbar.xml" value="0.1331521739130435" />
+        <entry key="..\:/Users/Dev5/Documents/android/WhatsApp_clone/app/src/main/res/menu/menu_main.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/layout/activity_cadastro_usuario.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16294642857142858" />

@@ -6,16 +6,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public final class ConfiguracaoFireBase {
-    private static DatabaseReference referencia_FireBase;
+    private static DatabaseReference referenciaFireBase;
     private static FirebaseAuth autenticacao;
 
     public static DatabaseReference getFireBase(){
 
-        if (referencia_FireBase == null) {
-            referencia_FireBase = FirebaseDatabase.getInstance().getReference();
+        if (referenciaFireBase == null) {
+            referenciaFireBase = FirebaseDatabase.getInstance().getReference();
         }
 
-        return referencia_FireBase;
+        return referenciaFireBase;
     }
     public static FirebaseAuth getFirebaseAutenticacao(){
         if (autenticacao == null){
