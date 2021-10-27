@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WhatsApp">
         <activity
+            android:name=".activity.ConversaActivity"
+            android:exported="false"
+            android:parentActivityName=".activity.MainActivity"/>
+        <activity
             android:name=".activity.CadastroUsuarioActivity"
             android:exported="true" />
         <activity

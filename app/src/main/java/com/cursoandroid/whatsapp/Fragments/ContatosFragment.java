@@ -1,5 +1,6 @@
 package com.cursoandroid.whatsapp.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,10 +9,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.cursoandroid.whatsapp.R;
+import com.cursoandroid.whatsapp.activity.ConversaActivity;
+import com.cursoandroid.whatsapp.adapter.ContatoAdapter;
 import com.cursoandroid.whatsapp.config.ConfiguracaoFireBase;
 import com.cursoandroid.whatsapp.helper.Preferencias;
 import com.cursoandroid.whatsapp.model.Contato;
@@ -25,7 +29,7 @@ import java.util.ArrayList;
 public class ContatosFragment extends Fragment {
     private ListView listView;
     private ArrayAdapter adapter;
-    private ArrayList<String> contatos;
+    private ArrayList<Contato> contatos;
     private DatabaseReference fireBase;
     private ValueEventListener valueEventListenerContatos;
 
@@ -61,7 +65,7 @@ public class ContatosFragment extends Fragment {
                 //dados para exibição
                 contatos
         );*/
-
+        adapter = new ContatoAdapter(getActivity(), contatos);
         listView.setAdapter(adapter);
         //Recuperar contatos do fire base
         Preferencias preferencias = new Preferencias(getActivity());
@@ -79,7 +83,7 @@ public class ContatosFragment extends Fragment {
                 //listar contatos
                 for (DataSnapshot dados: snapshot.getChildren()){
                     Contato contato = dados.getValue(Contato.class);
-                    contatos.add(contato.getNome());
+                    contatos.add(contato);
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -89,6 +93,14 @@ public class ContatosFragment extends Fragment {
 
             }
         };
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), ConversaActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
 
     }
